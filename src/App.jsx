@@ -81,7 +81,7 @@ const App = () => {
                         {/* Main Content */}
                         <div className="col-span-3 lg:col-span-7 flex flex-col justify-center z-20 h-full pl-0 lg:pl-32 relative">
                             {/* Vertical Text - Mathematically precision-aligned 1rem left of the title block (padding is 8rem) */}
-                            <div className="absolute left-24 top-[40%] -translate-y-1/2 hidden lg:flex items-center gap-2 -rotate-90 origin-bottom-left">
+                            <div className="absolute left-24 top-[60%] -translate-y-1/2 hidden lg:flex items-center gap-2 -rotate-90 origin-bottom-left">
                                 <span className="w-8 h-[1px] bg-gray-600 inline-block shrink-0"></span>
                                 <span className="text-xs tracking-[0.2em] text-gray-500 whitespace-nowrap uppercase">Product Designer</span>
                             </div>
