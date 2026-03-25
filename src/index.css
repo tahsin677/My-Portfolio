@@ -1,0 +1,108 @@
+@import url('https://fonts.googleapis.com/css2?family=Syne:wght@400;700;800&display=swap');
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Custom Cursor Styles */
+body {
+    cursor: none;
+    /* Hide default cursor */
+}
+
+.cursor-outline,
+.cursor-dot {
+    opacity: 0;
+    position: fixed;
+    /* Changed from absolute to fixed for viewport relative positioning */
+    top: 0;
+    left: 0;
+    pointer-events: none;
+    z-index: 9999;
+}
+
+.cursor-outline {
+    width: 80px;
+    height: 80px;
+    border: 1px solid rgba(255, 255, 255, 0.5);
+    border-radius: 50%;
+    transform: translate(-50%, -50%);
+    mix-blend-mode: difference;
+}
+
+.cursor-dot {
+    width: 8px;
+    /* Adjusted size for better visibility */
+    height: 8px;
+    background-color: white;
+    border-radius: 50%;
+    transform: translate(-50%, -50%);
+    mix-blend-mode: difference;
+}
+
+/* Target element styles for magnetic effect */
+.target {
+    position: relative;
+
+    cursor: none;
+    /* Ensure cursor is hidden over targets */
+}
+
+/* Stroke Text */
+.stroke-text {
+    -webkit-text-stroke: 1px rgba(255, 255, 255, 0.3);
+    color: transparent;
+}
+
+.stroke-text:hover {
+    -webkit-text-stroke: 1px #fff;
+    color: #fff;
+}
+
+.stroke-text-dark {
+    -webkit-text-stroke: 1px rgba(0, 0, 0, 0.3);
+    color: transparent;
+}
+
+.stroke-text-dark:hover {
+    -webkit-text-stroke: 1px #000;
+    color: #000;
+}
+
+/* Vertical Scroll Animation */
+@keyframes vertical-scroll {
+    0% {
+        transform: translateY(0);
+    }
+
+    100% {
+        transform: translateY(-50%);
+    }
+}
+
+.animate-vertical-scroll {
+    animation: vertical-scroll 10s linear infinite;
+}
+
+.font-syne {
+    font-family: 'Syne', sans-serif;
+}
+
+.animate-vertical-scroll:hover {
+    animation-play-state: paused;
+}
+
+/* Gradient Mask for Carousel */
+/* Gradient Mask for Carousel - Desktop Only */
+@media (min-width: 768px) {
+    .mask-gradient {
+        mask-image: linear-gradient(to bottom, transparent, black 20%, black 80%, transparent);
+        -webkit-mask-image: linear-gradient(to bottom, transparent, black 20%, black 80%, transparent);
+    }
+}
+
+.text {
+    position: relative;
+    display: inline-block;
+    pointer-events: none;
+    /* Let events pass through to target */
+}
