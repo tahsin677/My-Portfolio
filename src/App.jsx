@@ -87,14 +87,14 @@ const App = () => {
                             </div>
 
                             {/* Stats */}
-                            <div className="flex gap-12 mb-12 lg:justify-start">
+                            <div className="flex gap-6 md:gap-12 mb-12 lg:justify-start">
                                 <div>
-                                    <h3 className="text-2xl font-light">30+</h3>
-                                    <p className="text-[10px] text-gray-500 uppercase tracking-wider mt-1">Project completed</p>
+                                    <h3 className="text-2xl font-light whitespace-nowrap">30+</h3>
+                                    <p className="text-[10px] text-gray-500 uppercase tracking-wider mt-1 md:whitespace-nowrap">Project completed</p>
                                 </div>
                                 <div>
-                                    <h3 className="text-2xl font-light">Co-Founder</h3>
-                                    <p className="text-[10px] text-gray-500 uppercase tracking-wider mt-1">Vector3.Agency</p>
+                                    <h3 className="text-2xl font-light whitespace-nowrap">Co-Founder</h3>
+                                    <p className="text-[10px] text-gray-500 uppercase tracking-wider mt-1 whitespace-nowrap">Vector3.Agency</p>
                                 </div>
                             </div>
 

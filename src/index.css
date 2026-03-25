@@ -106,3 +106,13 @@ body {
     pointer-events: none;
     /* Let events pass through to target */
 }
+
+/* Disable Custom Cursor on Mobile/Tablet & Touch Devices */
+@media (hover: none) and (pointer: coarse), (max-width: 1024px) {
+    body, .target {
+        cursor: auto !important;
+    }
+    .cursor-outline, .cursor-dot {
+        display: none !important;
+    }
+}
