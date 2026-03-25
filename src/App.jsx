@@ -152,7 +152,7 @@ const App = () => {
 
                         {/* Text Column */}
                         <div>
-                            <p className="text-2xl md:text-3xl lg:text-4xl font-medium leading-tight text-gray-900">
+                            <p className="text-2xl md:text-3xl lg:text-4xl font-normal leading-tight text-gray-900">
                                 I’m <span className="italic text-purple-600">Tahsin Drubo</span>, a product design enthusiast and developer who enjoys turning ideas into things that make sense to use.
                                 {!bioExpanded && (
                                     <span className="md:hidden">
