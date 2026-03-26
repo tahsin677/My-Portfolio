@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react';
-import { ArrowUpRight, Menu, X, Instagram, Linkedin, Twitter, Globe, ArrowRight } from 'lucide-react';
+import { ArrowUpRight, Menu, X, Instagram, Linkedin, Twitter, Globe, ArrowRight, ChevronDown } from 'lucide-react';
 import Lenis from 'lenis';
 import { motion } from 'framer-motion';
 import heroImage from './assets/PHOTO.TAHSIN DRUBO.webp';
@@ -20,6 +20,57 @@ const EXPERTISE_ITEMS = [
     { title: "SaaS Videos", subtitle: "Explaining complex products with visual clarity." },
     { title: "Mobile/Web App", subtitle: "Developing robust and scalable applications." },
     { title: "Web Development", superscript: "AI Powered", subtitle: "Building modern web experiences powered by artificial intelligence." }
+];
+
+const EXPERIENCES = [
+    {
+        company: "Vector3 LLC",
+        role: "COO & Co-Founder",
+        type: "Full-time",
+        date: "Nov 2025 - Present",
+        duration: "5 mos",
+        location: "Bangladesh · Hybrid",
+        description: "We help businesses turn ideas into high-performing digital products. Websites • SaaS • Mobile Apps • UI/UX",
+        skills: "User Experience (UX), User Interface Design and +1 skill"
+    },
+    {
+        company: <>BRAC University<br />Esports Club</>,
+        type: "Full-time",
+        totalDuration: "1 yr 9 mos",
+        location: "Dhaka, Bangladesh · Hybrid",
+        roles: [
+            {
+                role: "President",
+                date: "Feb 2026 - Present",
+                duration: "2 mos",
+                description: "Lead the overall vision, strategy and execution of the club, aligning teams across communications, marketing, events, and operations.",
+                skills: "Communication, Leadership and +3 skills"
+            },
+            {
+                role: "Director",
+                date: "May 2025 - Present",
+                duration: "11 mos",
+                description: "I guide the entire communication & marketing department to manage the club's activities, organize events like workshops or tournaments, and work with multiple tech companies to grow our e-sports community.",
+                skills: "Strategic Communications, Marketing Strategy and +2 skills"
+            },
+            {
+                role: "Assistant Director",
+                date: "Jul 2024 - May 2025",
+                duration: "11 mos",
+                description: "I help to manage the club's activities, organize events like workshops or tournaments, and work with others to grow our e-sports community. I also handle collaborations with gaming companies and ensure...",
+                skills: "Strategic Communications, Marketing Strategy and +2 skills"
+            }
+        ]
+    },
+    {
+        company: "Unipuler Ltd. UK",
+        role: "Marketing Executive",
+        type: "Internship",
+        date: "Jul 2024 - Oct 2024",
+        duration: "4 mos",
+        location: "Dhaka, Bangladesh · Remote",
+        skills: "Sales Operations, Marketing Strategy and +1 skill"
+    }
 ];
 
 const PROJECTS = [
@@ -309,6 +360,31 @@ const App = () => {
                 </div>
             </section>
 
+            {/* ================= EXPERIENCE SECTION ================= */}
+            <section id="experience" className="bg-gray-50 text-black py-24 md:py-32 relative z-20 overflow-hidden">
+                <div className="container mx-auto px-6">
+                    <div className="flex flex-col gap-16 md:gap-20 items-center w-full">
+                        {/* Title */}
+                        <div className="w-full flex flex-col items-center text-center gap-6">
+                            <div>
+                                <span className="text-sm font-bold tracking-widest text-gray-500 uppercase block mb-4">(My Journey)</span>
+                                <h2 className="text-4xl md:text-6xl font-normal leading-tight">
+                                    Professional <span className="text-purple-600 italic">Experience.</span>
+                                </h2>
+                            </div>
+                        </div>
+
+                        {/* Experience List */}
+                        <div className="w-full max-w-4xl flex flex-col gap-12 text-left">
+                            {EXPERIENCES.map((exp, index) => (
+                                <ExperienceCard key={index} exp={exp} />
+                            ))}
+                        </div>
+                        
+                    </div>
+                </div>
+            </section>
+
             {/* ================= FOOTER ================= */}
             <footer className="bg-black text-white py-16 relative z-20">
                 <div className="container mx-auto px-6 flex flex-col md:flex-row justify-between items-center gap-8">
@@ -393,5 +469,98 @@ const SocialLink = ({ icon, href }) => (
         {icon}
     </a>
 );
+
+const ExperienceCard = ({ exp }) => {
+    const [expanded, setExpanded] = useState(false);
+
+    return (
+        <div className="flex flex-col md:flex-row gap-6 md:gap-12 border-b border-gray-200 pb-12 last:border-0 last:pb-0">
+            {/* Company Info */}
+            <div className="md:w-1/3 flex flex-col gap-2">
+                <h3 className="text-2xl font-bold text-gray-900">{exp.company}</h3>
+                <div className="text-sm text-gray-500 font-medium">
+                    {exp.type} {exp.totalDuration && `· ${exp.totalDuration}`}
+                </div>
+                <div className="text-sm text-gray-500 font-medium">{exp.location}</div>
+            </div>
+
+            {/* Roles or Single Role */}
+            <div className="md:w-2/3 flex flex-col">
+                {exp.roles ? (
+                    <div className="flex flex-col relative">
+                        {/* Timeline line */}
+                        <div className={`absolute left-[4px] top-2 ${expanded ? 'bottom-8 opacity-100' : 'bottom-0 opacity-0'} w-[2px] bg-gray-200 hidden md:block transition-all duration-300`}></div>
+                        
+                        {/* First Role / Most Recent */}
+                        <div className={`relative mb-8 last:mb-0 z-20 transition-all duration-300 ${expanded ? 'md:pl-8' : ''}`}>
+                            {/* Timeline dot */}
+                            <div className={`absolute left-[0px] top-2 w-[10px] h-[10px] rounded-full bg-gray-400 hidden md:block z-10 ring-4 ring-gray-50 transition-opacity duration-300 ${expanded ? 'opacity-100' : 'opacity-0'}`}></div>
+                            
+                            <h4 className="text-xl font-bold text-gray-900 mb-1">{exp.roles[0].role}</h4>
+                            <div className="text-sm text-gray-500 mb-3 font-medium">{exp.roles[0].date} · {exp.roles[0].duration}</div>
+                            <p className="text-gray-600 text-sm md:text-base mb-3 leading-relaxed">{exp.roles[0].description}</p>
+                            {exp.roles[0].skills && (
+                                <div className="flex items-center gap-2 text-sm text-gray-700 font-medium font-sans">
+                                    <span className="w-2 h-2 border-[1.5px] border-gray-500 rotate-45 shrink-0"></span>
+                                    {exp.roles[0].skills}
+                                </div>
+                            )}
+                        </div>
+
+                        {/* Collapsible Roles */}
+                        {exp.roles.length > 1 && (
+                            <>
+                                <motion.div 
+                                    initial={false} 
+                                    animate={{ height: expanded ? 'auto' : 0, opacity: expanded ? 1 : 0 }} 
+                                    className="overflow-hidden flex flex-col origin-top z-10"
+                                >
+                                    {exp.roles.slice(1).map((role, rIndex) => (
+                                        <div key={rIndex} className="relative md:pl-8 mb-8 last:mb-6">
+                                            {/* Timeline dot */}
+                                            <div className="absolute left-[0px] top-2 w-[10px] h-[10px] rounded-full bg-gray-300 hidden md:block z-10 ring-4 ring-gray-50"></div>
+                                            
+                                            <h4 className="text-xl font-bold text-gray-800 mb-1">{role.role}</h4>
+                                            <div className="text-sm text-gray-500 mb-3 font-medium">{role.date} · {role.duration}</div>
+                                            <p className="text-gray-600 text-sm md:text-base mb-3 leading-relaxed">{role.description}</p>
+                                            {role.skills && (
+                                                <div className="flex items-center gap-2 text-sm text-gray-700 font-medium font-sans">
+                                                    <span className="w-2 h-2 border-[1.5px] border-gray-500 rotate-45 shrink-0"></span>
+                                                    {role.skills}
+                                                </div>
+                                            )}
+                                        </div>
+                                    ))}
+                                </motion.div>
+                                
+                                <div className={`relative z-20 transition-all duration-300 ${expanded ? 'md:pl-8' : ''}`}>
+                                    <button 
+                                        onClick={() => setExpanded(!expanded)}
+                                        className="inline-flex items-center gap-2 text-sm font-bold text-gray-400 hover:text-black transition-colors tracking-wider uppercase bg-gray-50 select-none py-1 group/btn"
+                                    >
+                                        {expanded ? 'Show Less' : `Show ${exp.roles.length - 1} earlier roles`}
+                                        <ChevronDown size={18} className={`transform transition-transform duration-300 ${expanded ? 'rotate-180 group-hover/btn:-translate-y-0.5' : 'group-hover/btn:translate-y-0.5'}`} />
+                                    </button>
+                                </div>
+                            </>
+                        )}
+                    </div>
+                ) : (
+                    <div className="flex flex-col">
+                        <h4 className="text-xl font-bold text-gray-900 mb-1">{exp.role}</h4>
+                        <div className="text-sm text-gray-500 mb-3 font-medium">{exp.date} · {exp.duration}</div>
+                        {exp.description && <p className="text-gray-600 text-sm md:text-base mb-3 leading-relaxed">{exp.description}</p>}
+                        {exp.skills && (
+                            <div className="flex items-center gap-2 text-sm text-gray-700 font-medium mt-auto lg:mt-2 font-sans">
+                                <span className="w-2 h-2 border-[1.5px] border-gray-500 rotate-45 shrink-0"></span>
+                                {exp.skills}
+                            </div>
+                        )}
+                    </div>
+                )}
+            </div>
+        </div>
+    );
+};
 
 export default App;
