@@ -474,35 +474,38 @@ const ExperienceCard = ({ exp }) => {
     const [expanded, setExpanded] = useState(false);
 
     return (
-        <div className="flex flex-col md:flex-row gap-6 md:gap-12 border-b border-gray-200 pb-12 last:border-0 last:pb-0">
+        <div className="flex flex-col md:flex-row gap-5 md:gap-12 border border-gray-100 md:border-0 md:border-b md:border-gray-200 bg-white md:bg-transparent rounded-2xl md:rounded-none p-6 md:p-0 pb-6 md:pb-12 shadow-[0_2px_10px_rgb(0,0,0,0.02)] md:shadow-none mb-6 last:mb-0 md:mb-0 md:last:pb-0 md:last:border-0 transition-all hover:border-purple-100 md:hover:border-b-gray-200 group/card">
             {/* Company Info */}
-            <div className="md:w-1/3 flex flex-col gap-2">
-                <h3 className="text-2xl font-bold text-gray-900">{exp.company}</h3>
-                <div className="text-sm text-gray-500 font-medium">
-                    {exp.type} {exp.totalDuration && `· ${exp.totalDuration}`}
+            <div className="md:w-1/3 flex flex-col gap-1 md:gap-2">
+                <h3 className="text-xl md:text-2xl font-bold text-gray-900 leading-snug">{exp.company}</h3>
+                <div className="text-sm text-gray-500 font-medium flex flex-wrap gap-2 md:gap-1 items-center md:items-start mt-1 md:mt-0">
+                    <span className="bg-gray-50 md:bg-transparent text-gray-600 md:text-gray-500 border border-gray-100 md:border-0 px-2 py-0.5 md:p-0 rounded-md md:rounded-none text-[10px] md:text-sm font-bold md:font-medium tracking-wide uppercase md:normal-case md:tracking-normal">{exp.type}</span>
+                    {exp.totalDuration && <span className="text-[10px] md:text-sm text-gray-400 md:text-gray-500 font-bold md:font-medium uppercase md:normal-case tracking-wide md:tracking-normal">· {exp.totalDuration}</span>}
                 </div>
-                <div className="text-sm text-gray-500 font-medium">{exp.location}</div>
+                <div className="text-xs md:text-sm text-gray-400 font-medium mt-1 md:mt-0">{exp.location}</div>
             </div>
 
             {/* Roles or Single Role */}
-            <div className="md:w-2/3 flex flex-col">
+            <div className="md:w-2/3 flex flex-col mt-4 md:mt-0">
                 {exp.roles ? (
                     <div className="flex flex-col relative">
                         {/* Timeline line */}
                         <div className={`absolute left-[4px] top-2 ${expanded ? 'bottom-8 opacity-100' : 'bottom-0 opacity-0'} w-[2px] bg-gray-200 hidden md:block transition-all duration-300`}></div>
                         
                         {/* First Role / Most Recent */}
-                        <div className={`relative mb-8 last:mb-0 z-20 transition-all duration-300 ${expanded ? 'md:pl-8' : ''}`}>
+                        <div className={`relative mb-6 md:mb-8 last:mb-0 z-20 transition-all duration-300 ${expanded ? 'md:pl-8' : ''}`}>
                             {/* Timeline dot */}
                             <div className={`absolute left-[0px] top-2 w-[10px] h-[10px] rounded-full bg-gray-400 hidden md:block z-10 ring-4 ring-gray-50 transition-opacity duration-300 ${expanded ? 'opacity-100' : 'opacity-0'}`}></div>
-                            
-                            <h4 className="text-xl font-bold text-gray-900 mb-1">{exp.roles[0].role}</h4>
-                            <div className="text-sm text-gray-500 mb-3 font-medium">{exp.roles[0].date} · {exp.roles[0].duration}</div>
-                            <p className="text-gray-600 text-sm md:text-base mb-3 leading-relaxed">{exp.roles[0].description}</p>
+
+                            <h4 className="text-lg md:text-xl font-bold text-gray-900 mb-1">{exp.roles[0].role}</h4>
+                            <div className="text-xs md:text-sm text-purple-600 md:text-gray-500 font-semibold md:font-medium mb-2 md:mb-3">{exp.roles[0].date} <span className="text-gray-400 md:text-gray-500 font-medium md:font-medium ml-1 md:ml-0">· {exp.roles[0].duration}</span></div>
+                            <p className="text-gray-600 text-sm md:text-base mb-3 md:mb-3 leading-relaxed">{exp.roles[0].description}</p>
                             {exp.roles[0].skills && (
-                                <div className="flex items-center gap-2 text-sm text-gray-700 font-medium font-sans">
-                                    <span className="w-2 h-2 border-[1.5px] border-gray-500 rotate-45 shrink-0"></span>
-                                    {exp.roles[0].skills}
+                                <div className="flex flex-wrap gap-2 md:block">
+                                    <div className="inline-flex md:flex md:w-auto items-center gap-1.5 md:gap-2 text-[10px] md:text-sm text-gray-600 md:text-gray-700 font-medium font-sans bg-gray-50 md:bg-transparent border border-gray-100 md:border-0 px-2 md:px-0 py-1 md:py-0 rounded-md md:rounded-none">
+                                        <span className="w-1.5 h-1.5 md:w-2 md:h-2 bg-purple-500 md:bg-transparent md:border-[1.5px] md:border-gray-500 rounded-full md:rounded-none rotate-45 shrink-0"></span>
+                                        {exp.roles[0].skills}
+                                    </div>
                                 </div>
                             )}
                         </div>
@@ -516,44 +519,48 @@ const ExperienceCard = ({ exp }) => {
                                     className="overflow-hidden flex flex-col origin-top z-10"
                                 >
                                     {exp.roles.slice(1).map((role, rIndex) => (
-                                        <div key={rIndex} className="relative md:pl-8 mb-8 last:mb-6">
+                                        <div key={rIndex} className="relative md:pl-8 mb-6 md:mb-8 last:mb-6 md:last:mb-6">
                                             {/* Timeline dot */}
                                             <div className="absolute left-[0px] top-2 w-[10px] h-[10px] rounded-full bg-gray-300 hidden md:block z-10 ring-4 ring-gray-50"></div>
                                             
-                                            <h4 className="text-xl font-bold text-gray-800 mb-1">{role.role}</h4>
-                                            <div className="text-sm text-gray-500 mb-3 font-medium">{role.date} · {role.duration}</div>
+                                            <h4 className="text-lg md:text-xl font-bold text-gray-800 mb-1">{role.role}</h4>
+                                            <div className="text-xs md:text-sm text-gray-500 font-medium mb-2 md:mb-3">{role.date} <span className="text-gray-400 md:text-gray-500 md:ml-0 ml-1">· {role.duration}</span></div>
                                             <p className="text-gray-600 text-sm md:text-base mb-3 leading-relaxed">{role.description}</p>
                                             {role.skills && (
-                                                <div className="flex items-center gap-2 text-sm text-gray-700 font-medium font-sans">
-                                                    <span className="w-2 h-2 border-[1.5px] border-gray-500 rotate-45 shrink-0"></span>
-                                                    {role.skills}
+                                                <div className="flex flex-wrap gap-2 md:block">
+                                                    <div className="inline-flex md:flex items-center gap-1.5 md:gap-2 text-[10px] md:text-sm text-gray-600 md:text-gray-700 font-medium font-sans bg-gray-50 md:bg-transparent border border-gray-100 md:border-0 px-2 md:px-0 py-1 md:py-0 rounded-md md:rounded-none">
+                                                        <span className="w-1.5 h-1.5 md:w-2 md:h-2 bg-gray-400 md:bg-transparent md:border-[1.5px] md:border-gray-500 rounded-full md:rounded-none rotate-45 shrink-0"></span>
+                                                        {role.skills}
+                                                    </div>
                                                 </div>
                                             )}
                                         </div>
                                     ))}
                                 </motion.div>
                                 
-                                <div className={`relative z-20 transition-all duration-300 ${expanded ? 'md:pl-8' : ''}`}>
+                                <div className={`relative z-20 transition-all duration-300 mt-1 md:mt-0 ${expanded ? 'md:pl-8' : ''}`}>
                                     <button 
                                         onClick={() => setExpanded(!expanded)}
-                                        className="inline-flex items-center gap-2 text-sm font-bold text-gray-400 hover:text-black transition-colors tracking-wider uppercase bg-gray-50 select-none py-1 group/btn"
+                                        className="inline-flex items-center gap-2 text-[10px] md:text-sm font-bold text-gray-600 md:text-gray-400 hover:text-purple-600 md:hover:text-black transition-colors bg-white md:bg-gray-50 hover:bg-purple-50 md:hover:bg-gray-50 border border-gray-200 md:border-0 uppercase md:uppercase py-2 md:py-1 px-4 md:px-0 rounded-lg md:rounded-none group/btn shadow-sm md:shadow-none tracking-widest md:tracking-wider select-none md:select-none"
                                     >
                                         {expanded ? 'Show Less' : `Show ${exp.roles.length - 1} earlier roles`}
-                                        <ChevronDown size={18} className={`transform transition-transform duration-300 ${expanded ? 'rotate-180 group-hover/btn:-translate-y-0.5' : 'group-hover/btn:translate-y-0.5'}`} />
+                                        <ChevronDown className={`w-3.5 h-3.5 md:w-[18px] md:h-[18px] transform transition-transform duration-300 ${expanded ? 'rotate-180 group-hover/btn:-translate-y-0.5' : 'group-hover/btn:translate-y-0.5'}`} />
                                     </button>
                                 </div>
                             </>
                         )}
                     </div>
                 ) : (
-                    <div className="flex flex-col">
-                        <h4 className="text-xl font-bold text-gray-900 mb-1">{exp.role}</h4>
-                        <div className="text-sm text-gray-500 mb-3 font-medium">{exp.date} · {exp.duration}</div>
+                    <div className="flex flex-col relative md:pl-0">
+                        <h4 className="text-lg md:text-xl font-bold text-gray-900 mb-1">{exp.role}</h4>
+                        <div className="text-xs md:text-sm text-purple-600 md:text-gray-500 font-semibold md:font-medium mb-2 md:mb-3">{exp.date} <span className="text-gray-400 md:text-gray-500 font-medium ml-1 md:ml-0">· {exp.duration}</span></div>
                         {exp.description && <p className="text-gray-600 text-sm md:text-base mb-3 leading-relaxed">{exp.description}</p>}
                         {exp.skills && (
-                            <div className="flex items-center gap-2 text-sm text-gray-700 font-medium mt-auto lg:mt-2 font-sans">
-                                <span className="w-2 h-2 border-[1.5px] border-gray-500 rotate-45 shrink-0"></span>
-                                {exp.skills}
+                            <div className="flex flex-wrap gap-2 md:block mt-auto md:mt-2">
+                                <div className="inline-flex md:flex items-center gap-1.5 md:gap-2 text-[10px] md:text-sm text-gray-600 md:text-gray-700 font-medium font-sans bg-gray-50 md:bg-transparent border border-gray-100 md:border-0 px-2 md:px-0 py-1 md:py-0 rounded-md md:rounded-none">
+                                    <span className="w-1.5 h-1.5 md:w-2 md:h-2 bg-purple-500 md:bg-transparent md:border-[1.5px] md:border-gray-500 rounded-full md:rounded-none rotate-45 shrink-0"></span>
+                                    {exp.skills}
+                                </div>
                             </div>
                         )}
                     </div>
