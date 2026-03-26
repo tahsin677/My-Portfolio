@@ -2,7 +2,6 @@ import { useState, useEffect } from 'react';
 import { ArrowUpRight, Menu, X, Instagram, Linkedin, Twitter, Globe, ArrowRight } from 'lucide-react';
 import Lenis from 'lenis';
 import { motion } from 'framer-motion';
-import CustomCursor from './components/CustomCursor';
 import heroImage from './assets/PHOTO.TAHSIN DRUBO.webp';
 import telemedImage from './assets/TELEMED.avif';
 import buedfImage from './assets/BUEDF - P2.avif';
@@ -76,7 +75,6 @@ const App = () => {
 
     return (
         <div className="min-h-screen font-sans selection:bg-purple-600 selection:text-white bg-black">
-            <CustomCursor />
 
             {/* ================= HERO SECTION (DARK) ================= */}
             <section id="home" className="relative min-h-auto md:min-h-[80vh] bg-black text-white overflow-hidden flex flex-col justify-center py-24 md:py-0">
@@ -216,24 +214,6 @@ const App = () => {
                 {/* Infinite Carousel Matrix */}
                 <div className="w-full flex flex-col gap-6 pause-on-hover py-2">
                         
-                        {/* Row 1 - Left to Right (Starts far left, rightward translation) */}
-                        <div className="flex gap-8 group/row w-full">
-                            <div className="flex gap-8 shrink-0 w-max animate-scroll-right">
-                                {ROW1.map((project, idx) => (
-                                    <div key={`r1-a-${idx}`} className="h-[25vh] md:h-[28vh] lg:h-[30vh] shrink-0">
-                                        <ProjectCard {...project} />
-                                    </div>
-                                ))}
-                            </div>
-                            <div className="flex gap-8 shrink-0 w-max animate-scroll-right" aria-hidden="true">
-                                {ROW1.map((project, idx) => (
-                                    <div key={`r1-b-${idx}`} className="h-[25vh] md:h-[28vh] lg:h-[30vh] shrink-0">
-                                        <ProjectCard {...project} />
-                                    </div>
-                                ))}
-                            </div>
-                        </div>
-
                         {/* Row 2 - Right to Left (Starts at 0, translates leftward) */}
                         <div className="flex gap-8 group/row w-full">
                             <div className="flex gap-8 shrink-0 w-max animate-scroll-left">
@@ -246,6 +226,24 @@ const App = () => {
                             <div className="flex gap-8 shrink-0 w-max animate-scroll-left" aria-hidden="true">
                                 {ROW2.map((project, idx) => (
                                     <div key={`r2-b-${idx}`} className="h-[25vh] md:h-[28vh] lg:h-[30vh] shrink-0">
+                                        <ProjectCard {...project} />
+                                    </div>
+                                ))}
+                            </div>
+                        </div>
+
+                        {/* Row 1 - Left to Right (Starts far left, rightward translation) */}
+                        <div className="flex gap-8 group/row w-full">
+                            <div className="flex gap-8 shrink-0 w-max animate-scroll-right">
+                                {ROW1.map((project, idx) => (
+                                    <div key={`r1-a-${idx}`} className="h-[25vh] md:h-[28vh] lg:h-[30vh] shrink-0">
+                                        <ProjectCard {...project} />
+                                    </div>
+                                ))}
+                            </div>
+                            <div className="flex gap-8 shrink-0 w-max animate-scroll-right" aria-hidden="true">
+                                {ROW1.map((project, idx) => (
+                                    <div key={`r1-b-${idx}`} className="h-[25vh] md:h-[28vh] lg:h-[30vh] shrink-0">
                                         <ProjectCard {...project} />
                                     </div>
                                 ))}
@@ -323,7 +321,9 @@ const App = () => {
                         <SocialLink href="https://vector3.agency" icon={<Globe size={20} />} />
                     </div>
 
-                    <p className="text-gray-500 text-sm">© 2025 Vector3.Agency. All rights reserved.</p>
+                    <p className="text-gray-500 text-sm">
+                        © 2025 <a href="https://vector3.agency" target="_blank" rel="noopener noreferrer" className="hover:text-white transition-colors">Vector3 LLC</a>. All rights reserved.
+                    </p>
                 </div>
             </footer>
         </div>
