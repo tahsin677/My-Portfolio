@@ -409,7 +409,7 @@ const App = () => {
 const ProjectCard = ({ image, category, title, year, darkOverlay = false, textColor = "text-white", wide = false, href }) => {
     // Determine the textColor (if background overlay is removed, you may need a dark text color, but we'll try to stick to what the user provided or make it black if it's too bright. Actually, let's keep it robust and use a dynamic drop shadow for text visibility)
     const CardContent = (
-        <>
+        <div className="w-full h-full relative isolate">
             {/* Added fallback background color if image fails */}
             <div className="absolute inset-0 bg-gray-200 animate-pulse"></div>
             <img
@@ -426,28 +426,28 @@ const ProjectCard = ({ image, category, title, year, darkOverlay = false, textCo
             />
 
             {/* Bottom Gradient Overlay */}
-            <div className="absolute inset-x-0 bottom-0 h-2/3 md:h-1/2 bg-gradient-to-t from-black/90 via-black/40 to-transparent z-10 pointer-events-none opacity-90"></div>
+            <div className="absolute inset-x-0 bottom-0 h-2/3 md:h-1/2 bg-gradient-to-t from-black/90 via-black/40 to-transparent z-10 pointer-events-none opacity-90 transform-gpu"></div>
 
             {/* Content Overlay */}
-            <div className="absolute inset-0 z-20 flex flex-col justify-end p-5 md:p-6 pointer-events-none text-white drop-shadow-md">
+            <div className="absolute inset-0 z-20 flex flex-col justify-end p-5 md:p-6 pointer-events-none text-white drop-shadow-md transform-gpu opacity-100">
                 <div className="flex justify-start items-end w-full">
                     <div>
-                        <h3 className="text-sm md:text-base font-bold mb-0.5 whitespace-nowrap">{title}</h3>
+                        <h3 className="text-sm md:text-base font-bold mb-0.5 whitespace-nowrap opacity-100">{title}</h3>
                         <p className="text-[10px] md:text-xs opacity-80 font-medium uppercase tracking-widest whitespace-nowrap">{category}</p>
                     </div>
                 </div>
             </div>
 
             {/* Hover Reveal Button - Top Right */}
-            <div className="absolute z-30 top-4 right-4 md:top-5 md:right-5 opacity-100 scale-100 md:opacity-0 md:scale-90 md:group-hover:opacity-100 md:group-hover:scale-100 transition-all duration-300 pointer-events-auto">
+            <div className="absolute z-30 top-4 right-4 md:top-5 md:right-5 opacity-100 scale-100 md:opacity-0 md:scale-90 md:group-hover:opacity-100 md:group-hover:scale-100 transition-all duration-300 pointer-events-auto transform-gpu">
                 <div className="w-8 h-8 md:w-10 md:h-10 bg-white text-black rounded-full flex items-center justify-center hover:bg-purple-600 hover:text-white transition-colors duration-300 shadow-lg cursor-pointer">
                     <ArrowUpRight size={16} />
                 </div>
             </div>
-        </>
+        </div>
     );
 
-    const className = `group relative overflow-hidden rounded-2xl bg-gray-200 cursor-pointer block h-full w-max`;
+    const className = `group relative overflow-hidden rounded-2xl bg-gray-200 cursor-pointer block h-full w-max isolate transform-gpu`;
 
     if (href) {
         return (
