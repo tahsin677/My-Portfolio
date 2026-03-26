@@ -123,7 +123,7 @@ const App = () => {
 
                         {/* Right Image Container - Grid Structured */}
                         <div className="col-span-2 lg:col-span-5 flex items-center justify-center lg:justify-start lg:pl-12 opacity-80 lg:opacity-100 mix-blend-lighten pointer-events-none mt-10 lg:mt-0 z-0">
-                            <div className="relative inline-flex w-full sm:w-[85%] max-w-[400px] lg:max-w-[450px] xl:max-w-[500px]">
+                            <div className="relative inline-flex w-full sm:w-[85%] max-w-[400px] lg:max-w-[450px] xl:max-w-[500px] -translate-y-4 lg:translate-y-0">
                                 {/* Frame Lines extending outwards (Tic-Tac-Toe / Hashtag Style) */}
                                 <div className="absolute top-0 -left-8 md:-left-16 -right-8 md:-right-16 h-[1px] bg-gray-600 z-20"></div>
                                 <div className="absolute bottom-0 -left-8 md:-left-16 -right-8 md:-right-16 h-[1px] bg-gray-600 z-20"></div>
