@@ -4,13 +4,16 @@ import Lenis from 'lenis';
 import { motion } from 'framer-motion';
 import CustomCursor from './components/CustomCursor';
 import heroImage from './assets/PHOTO.TAHSIN DRUBO.webp';
+import telemedImage from './assets/TELEMED.avif';
+import buedfImage from './assets/BUEDF - P2.avif';
+import homelenderImage from './assets/Homelender.avif';
+import slashCoffeeImage from './assets/Slash Coffee.avif';
+import traveloImage from './assets/Travelo.avif';
+import chatOSImage from './assets/ChatOS.avif';
+import macgreenImage from './assets/MacGreen.avif';
+import clairlunaImage from './assets/Clairluna.avif';
+import facultyReviewImage from './assets/Faculty Review.avif';
 
-const PORTFOLIO_IMAGES = {
-    heroProduct: "https://images.unsplash.com/photo-1611186871348-b1ce696e52c9?auto=format&fit=crop&q=80&w=1000",
-    heroCollection: "https://images.unsplash.com/photo-1542291026-7eec264c27ff?auto=format&fit=crop&q=80&w=1000",
-    essentials: "https://images.unsplash.com/photo-1616486338812-3dadae4b4f9d?auto=format&fit=crop&q=80&w=1000",
-    topPicks: "https://images.unsplash.com/photo-1586023492125-27b2c045efd7?auto=format&fit=crop&q=80&w=1000"
-};
 
 const EXPERTISE_ITEMS = [
     { title: "Product Design", superscript: "UI/UX", subtitle: "Crafting intuitive and engaging user experiences." },
@@ -19,6 +22,21 @@ const EXPERTISE_ITEMS = [
     { title: "Mobile/Web App", subtitle: "Developing robust and scalable applications." },
     { title: "Web Development", superscript: "AI Powered", subtitle: "Building modern web experiences powered by artificial intelligence." }
 ];
+
+const PROJECTS = [
+    { image: telemedImage, category: "MOBILE APP UI", title: "TeleMed", year: "2024", darkOverlay: true, wide: true, href: "https://dribbble.com/shots/27212807-TeleMed-Healthcare-Consultation-App-Home-Screen-UI" },
+    { image: buedfImage, category: "WEB APPLICATION", title: "USC 2025", year: "2025", wide: true, href: "https://usc2025.netlify.app/" },
+    { image: homelenderImage, category: "WEB APPLICATION", title: "Home Lender", year: "2025", wide: true, href: "https://home-lender.netlify.app/" },
+    { image: slashCoffeeImage, category: "WEB DESIGN", title: "Slash Coffee", year: "2025", wide: true },
+    { image: traveloImage, category: "WEB DESIGN", title: "Travelo", year: "2025", wide: true },
+    { image: chatOSImage, category: "WEB DESIGN", title: "ChatOS", year: "2025", wide: true },
+    { image: macgreenImage, category: "WEB DESIGN", title: "MacGreen", year: "2025", wide: true },
+    { image: clairlunaImage, category: "WEB APPLICATION", title: "Clairluna", year: "2025", wide: true },
+    { image: facultyReviewImage, category: "WEB DESIGN", title: "Faculty Review", year: "2025", wide: true }
+];
+
+const ROW1 = PROJECTS.slice(0, 5);
+const ROW2 = PROJECTS.slice(5, 9);
 
 const App = () => {
     const [scrolled, setScrolled] = useState(false);
@@ -94,7 +112,9 @@ const App = () => {
                                 </div>
                                 <div>
                                     <h3 className="text-2xl font-light whitespace-nowrap">Co-Founder</h3>
-                                    <p className="text-[10px] text-gray-500 uppercase tracking-wider mt-1 whitespace-nowrap">Vector3.Agency</p>
+                                    <p className="text-[10px] text-gray-500 uppercase tracking-wider mt-1 whitespace-nowrap">
+                                        <a href="https://vector3.agency" target="_blank" rel="noopener noreferrer" className="hover:text-white transition-colors">Vector3 LLC</a>
+                                    </p>
                                 </div>
                             </div>
 
@@ -152,7 +172,7 @@ const App = () => {
 
                         {/* Text Column */}
                         <div>
-                            <p className="text-2xl md:text-3xl lg:text-4xl font-medium leading-tight text-gray-900">
+                            <p className="text-2xl md:text-3xl lg:text-4xl font-medium leading-snug text-gray-900">
                                 I’m <span className="italic text-purple-600">Tahsin Drubo</span>, a product design enthusiast and developer who enjoys turning ideas into things that make sense to use.
                                 {!bioExpanded && (
                                     <span className="md:hidden">
@@ -182,84 +202,62 @@ const App = () => {
             </section>
 
             {/* ================= FEATURED WORK (LIGHT THEME) ================= */}
-            <section id="work" className="bg-gray-50 py-24 md:py-32 relative z-20">
+            <section id="work" className="bg-gray-50 py-10 md:py-12 relative z-20 overflow-hidden w-full">
                 <div className="container mx-auto px-6">
 
-                    <div className="mb-16">
-                        <span className="text-sm font-bold tracking-widest text-gray-400 uppercase">(Featured Work)</span>
+                    <div className="w-full flex flex-col items-center text-center gap-4 mb-12 relative z-20">
+                        <span className="text-sm font-bold tracking-widest text-gray-500 uppercase block">(Featured Work)</span>
+                        <h2 className="text-4xl md:text-6xl font-normal leading-tight">
+                            Concepts I’ve Brought to <span className="text-purple-600 italic">Life.</span>
+                        </h2>
                     </div>
+                </div>
 
-                    <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+                {/* Infinite Carousel Matrix */}
+                <div className="w-full flex flex-col gap-6 pause-on-hover py-2">
+                        
+                        {/* Row 1 - Left to Right (Starts far left, rightward translation) */}
+                        <div className="flex gap-8 group/row w-full">
+                            <div className="flex gap-8 shrink-0 w-max animate-scroll-right">
+                                {ROW1.map((project, idx) => (
+                                    <div key={`r1-a-${idx}`} className="h-[25vh] md:h-[28vh] lg:h-[30vh] shrink-0">
+                                        <ProjectCard {...project} />
+                                    </div>
+                                ))}
+                            </div>
+                            <div className="flex gap-8 shrink-0 w-max animate-scroll-right" aria-hidden="true">
+                                {ROW1.map((project, idx) => (
+                                    <div key={`r1-b-${idx}`} className="h-[25vh] md:h-[28vh] lg:h-[30vh] shrink-0">
+                                        <ProjectCard {...project} />
+                                    </div>
+                                ))}
+                            </div>
+                        </div>
 
-                        {/* Card 1 - Slide from Left */}
-                        <motion.div
-                            initial={{ opacity: 0, x: -100 }}
-                            whileInView={{ opacity: 1, x: 0 }}
-                            viewport={{ once: true, margin: "-100px" }}
-                            transition={{ duration: 0.8, ease: "easeOut" }}
-                        >
-                            <ProjectCard
-                                image={PORTFOLIO_IMAGES.heroProduct}
-                                category="HERO PRODUCTS"
-                                title="E-commerce website"
-                                year="2022"
-                                darkOverlay={true}
-                            />
-                        </motion.div>
-
-                        {/* Card 2 - Slide from Right */}
-                        <motion.div
-                            initial={{ opacity: 0, x: 100 }}
-                            whileInView={{ opacity: 1, x: 0 }}
-                            viewport={{ once: true, margin: "-100px" }}
-                            transition={{ duration: 0.8, ease: "easeOut", delay: 0.2 }}
-                        >
-                            <ProjectCard
-                                image={PORTFOLIO_IMAGES.heroCollection}
-                                category="HERO COLLECTION"
-                                title="Marking website"
-                                year="2023"
-                            />
-                        </motion.div>
-
-                        {/* Card 3 - Wide - Slide from Left */}
-                        <motion.div
-                            className="md:col-span-2"
-                            initial={{ opacity: 0, x: -100 }}
-                            whileInView={{ opacity: 1, x: 0 }}
-                            viewport={{ once: true, margin: "-100px" }}
-                            transition={{ duration: 0.8, ease: "easeOut" }}
-                        >
-                            <ProjectCard
-                                image={PORTFOLIO_IMAGES.essentials}
-                                category="ESSENTIALS COLLECTION"
-                                title="Marking website"
-                                year="2023"
-                                wide={true}
-                            />
-                        </motion.div>
-
-                        {/* Card 4 - Wide - Slide from Right */}
-                        <motion.div
-                            className="md:col-span-2"
-                            initial={{ opacity: 0, x: 100 }}
-                            whileInView={{ opacity: 1, x: 0 }}
-                            viewport={{ once: true, margin: "-100px" }}
-                            transition={{ duration: 0.8, ease: "easeOut" }}
-                        >
-                            <ProjectCard
-                                image={PORTFOLIO_IMAGES.topPicks}
-                                category="TOP PICKS"
-                                title="E-commerce website"
-                                year="2024"
-                                wide={true}
-                            />
-                        </motion.div>
+                        {/* Row 2 - Right to Left (Starts at 0, translates leftward) */}
+                        <div className="flex gap-8 group/row w-full">
+                            <div className="flex gap-8 shrink-0 w-max animate-scroll-left">
+                                {ROW2.map((project, idx) => (
+                                    <div key={`r2-a-${idx}`} className="h-[25vh] md:h-[28vh] lg:h-[30vh] shrink-0">
+                                        <ProjectCard {...project} />
+                                    </div>
+                                ))}
+                            </div>
+                            <div className="flex gap-8 shrink-0 w-max animate-scroll-left" aria-hidden="true">
+                                {ROW2.map((project, idx) => (
+                                    <div key={`r2-b-${idx}`} className="h-[25vh] md:h-[28vh] lg:h-[30vh] shrink-0">
+                                        <ProjectCard {...project} />
+                                    </div>
+                                ))}
+                            </div>
+                        </div>
 
                     </div>
-                    <div className="flex justify-center mt-20">
-                        <button className="group bg-black text-white px-8 py-4 font-bold text-sm tracking-wider flex items-center gap-4 hover:bg-purple-600 transition-all duration-300 target">
-                            <span className="text">SEE ALL WORKS</span>
+                    
+                    <div className="container mx-auto px-6 mt-12">
+                        <div className="flex justify-center">
+                            <button className="group bg-black text-white px-8 py-4 font-bold text-sm tracking-wider flex items-center gap-4 hover:bg-purple-600 transition-all duration-300 target">
+                                <span className="text">SEE ALL WORKS</span>
                             <span className="bg-purple-600 text-white p-1 group-hover:bg-white group-hover:text-black transition-colors rounded-sm">
                                 <ArrowUpRight size={16} />
                             </span>
@@ -277,8 +275,8 @@ const App = () => {
                         <div className="w-full flex flex-col items-center text-center gap-6">
                             <div>
                                 <span className="text-sm font-bold tracking-widest text-gray-500 uppercase block mb-4">(My Expertise)</span>
-                                <h2 className="text-4xl md:text-6xl font-light leading-tight">
-                                    What I do <span className="text-purple-600 italic">best.</span>
+                                <h2 className="text-4xl md:text-6xl font-normal leading-tight">
+                                    Things I Can Get Done <span className="text-purple-600 italic">For You.</span>
                                 </h2>
                             </div>
                         </div>
@@ -332,47 +330,63 @@ const App = () => {
     );
 };
 
-const ProjectCard = ({ image, category, title, year, darkOverlay = false, textColor = "text-white", wide = false }) => (
-    <div className={`group relative overflow-hidden rounded-2xl ${wide ? 'h-[400px] md:h-[500px]' : 'h-[400px]'} bg-gray-200 cursor-pointer`}>
-        {/* Added fallback background color if image fails */}
-        <div className="absolute inset-0 bg-gray-300 animate-pulse"></div>
-        <img
-            src={image}
-            alt={category}
-            className="w-full h-full object-cover relative z-10 transition-transform duration-700 group-hover:scale-105"
-            onLoad={(e) => e.target.previousSibling.style.display = 'none'}
-            onError={(e) => {
-                e.target.style.opacity = 0;
-                e.target.previousSibling.classList.remove('animate-pulse');
-                e.target.previousSibling.classList.add('flex', 'items-center', 'justify-center', 'text-gray-500', 'text-sm');
-                e.target.previousSibling.innerText = "Image Unavailable";
-            }}
-        />
+const ProjectCard = ({ image, category, title, year, darkOverlay = false, textColor = "text-white", wide = false, href }) => {
+    // Determine the textColor (if background overlay is removed, you may need a dark text color, but we'll try to stick to what the user provided or make it black if it's too bright. Actually, let's keep it robust and use a dynamic drop shadow for text visibility)
+    const CardContent = (
+        <>
+            {/* Added fallback background color if image fails */}
+            <div className="absolute inset-0 bg-gray-200 animate-pulse"></div>
+            <img
+                src={image}
+                alt={category}
+                className="h-full w-auto object-cover block relative z-10 transition-transform duration-300 will-change-transform transform-gpu group-hover:scale-[1.02]"
+                onLoad={(e) => e.target.previousSibling.style.display = 'none'}
+                onError={(e) => {
+                    e.target.style.opacity = 0;
+                    e.target.previousSibling.classList.remove('animate-pulse');
+                    e.target.previousSibling.classList.add('flex', 'items-center', 'justify-center', 'text-gray-500', 'text-sm');
+                    e.target.previousSibling.innerText = "Image Unavailable";
+                }}
+            />
 
-        {/* Overlay */}
-        <div className={`absolute inset-0 z-20 flex flex-col justify-between p-8 transition-opacity duration-300 ${darkOverlay ? 'bg-black/40' : 'bg-gradient-to-b from-black/5 to-transparent'}`}>
+            {/* Bottom Gradient Overlay */}
+            <div className="absolute inset-x-0 bottom-0 h-2/3 md:h-1/2 bg-gradient-to-t from-black/90 via-black/40 to-transparent z-10 pointer-events-none opacity-90"></div>
 
-            <div className={textColor}>
-                <h3 className="text-lg font-bold uppercase tracking-wide mb-1 drop-shadow-sm">{category}</h3>
-                <p className="text-sm opacity-90 font-medium">{title}</p>
+            {/* Content Overlay */}
+            <div className="absolute inset-0 z-20 flex flex-col justify-end p-5 md:p-6 pointer-events-none text-white drop-shadow-md">
+                <div className="flex justify-start items-end w-full">
+                    <div>
+                        <h3 className="text-sm md:text-base font-bold mb-0.5 whitespace-nowrap">{title}</h3>
+                        <p className="text-[10px] md:text-xs opacity-80 font-medium uppercase tracking-widest whitespace-nowrap">{category}</p>
+                    </div>
+                </div>
             </div>
 
-            <div className={`flex justify-end items-center gap-2 ${textColor}`}>
-                <div className="w-2 h-2 rounded-full bg-current"></div>
-                <span className="text-sm font-mono font-bold">{year}</span>
+            {/* Hover Reveal Button - Top Right */}
+            <div className="absolute z-30 top-4 right-4 md:top-5 md:right-5 opacity-100 scale-100 md:opacity-0 md:scale-90 md:group-hover:opacity-100 md:group-hover:scale-100 transition-all duration-300 pointer-events-auto">
+                <div className="w-8 h-8 md:w-10 md:h-10 bg-white text-black rounded-full flex items-center justify-center hover:bg-purple-600 hover:text-white transition-colors duration-300 shadow-lg cursor-pointer">
+                    <ArrowUpRight size={16} />
+                </div>
             </div>
+        </>
+    );
 
-        </div>
+    const className = `group relative overflow-hidden rounded-2xl bg-gray-200 cursor-pointer block h-full w-max`;
 
-        {/* Hover Reveal Button */}
-        {/* Hover Reveal Button - Top Right */}
-        <div className="absolute z-30 top-8 right-8 opacity-100 scale-100 md:opacity-0 md:scale-90 md:group-hover:opacity-100 md:group-hover:scale-100 transition-all duration-300">
-            <button className="w-12 h-12 bg-white text-black rounded-full flex items-center justify-center hover:bg-purple-600 hover:text-white transition-colors shadow-lg">
-                <ArrowUpRight size={20} />
-            </button>
+    if (href) {
+        return (
+            <a href={href} target="_blank" rel="noopener noreferrer" className={className}>
+                {CardContent}
+            </a>
+        );
+    }
+
+    return (
+        <div className={className}>
+            {CardContent}
         </div>
-    </div>
-);
+    );
+};
 
 const SocialLink = ({ icon, href }) => (
     <a href={href} target="_blank" rel="noopener noreferrer" className="w-10 h-10 rounded-full bg-gray-900 flex items-center justify-center text-gray-400 hover:bg-purple-600 hover:text-white transition-all duration-300">
