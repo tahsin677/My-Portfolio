@@ -31,7 +31,7 @@ const EXPERIENCES = [
         duration: "5 mos",
         location: "Bangladesh · Hybrid",
         description: "We help businesses turn ideas into high-performing digital products. Websites • SaaS • Mobile Apps • UI/UX",
-        skills: "User Experience (UX), User Interface Design and +1 skill"
+        skills: "User Experience (UX), User Interface Design"
     },
     {
         company: <>BRAC University<br />Esports Club</>,
@@ -44,21 +44,21 @@ const EXPERIENCES = [
                 date: "Feb 2026 - Present",
                 duration: "2 mos",
                 description: "Lead the overall vision, strategy and execution of the club, aligning teams across communications, marketing, events, and operations.",
-                skills: "Communication, Leadership and +3 skills"
+                skills: "Communication, Leadership"
             },
             {
                 role: "Director",
                 date: "May 2025 - Present",
                 duration: "11 mos",
                 description: "I guide the entire communication & marketing department to manage the club's activities, organize events like workshops or tournaments, and work with multiple tech companies to grow our e-sports community.",
-                skills: "Strategic Communications, Marketing Strategy and +2 skills"
+                skills: "Strategic Communications, Marketing Strategy"
             },
             {
                 role: "Assistant Director",
                 date: "Jul 2024 - May 2025",
                 duration: "11 mos",
                 description: "I help to manage the club's activities, organize events like workshops or tournaments, and work with others to grow our e-sports community. I also handle collaborations with gaming companies and ensure...",
-                skills: "Strategic Communications, Marketing Strategy and +2 skills"
+                skills: "Strategic Communications, Marketing Strategy"
             }
         ]
     },
@@ -69,7 +69,7 @@ const EXPERIENCES = [
         date: "Jul 2024 - Oct 2024",
         duration: "4 mos",
         location: "Dhaka, Bangladesh · Remote",
-        skills: "Sales Operations, Marketing Strategy and +1 skill"
+        skills: "Sales Operations, Marketing Strategy"
     }
 ];
 
